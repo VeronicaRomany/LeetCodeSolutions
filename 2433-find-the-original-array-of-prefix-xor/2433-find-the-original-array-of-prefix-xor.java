@@ -8,6 +8,7 @@ class Solution {
             pref[i] ^= temp[i-1] ;
             temp[i] = temp[i-1] ^ pref[i];
         }
+        System.gc();
         
         return pref;
     }
