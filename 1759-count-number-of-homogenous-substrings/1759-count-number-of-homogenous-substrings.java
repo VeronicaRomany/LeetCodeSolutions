@@ -6,9 +6,9 @@ class Solution {
 
         long temp = 1;
         long homogenousCount=0;
-        
+        char[] charArray = s.toCharArray();
         for(int i=1 ; i<s.length(); i++){
-            if(s.charAt(i) == s.charAt(i-1)){
+            if(charArray[i] == charArray[i-1]){
                 temp ++;
             }else{
                
