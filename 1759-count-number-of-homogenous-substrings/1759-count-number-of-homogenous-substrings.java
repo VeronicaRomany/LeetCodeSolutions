@@ -4,26 +4,26 @@ class Solution {
     
     public int countHomogenous(String s) {
 
-        String temp = Character.toString(s.charAt(0));
+        long temp = 1;
         long homogenousCount=0;
         
         for(int i=1 ; i<s.length(); i++){
-            if(s.charAt(i) == temp.charAt(temp.length()-1)){
-                temp += s.charAt(i);
+            if(s.charAt(i) == s.charAt(i-1)){
+                temp ++;
             }else{
                
-                long n = temp.length();
-                homogenousCount = (homogenousCount + (n*(n+1)/2))% MODULO;
                 
-                temp = Character.toString(s.charAt(i));
+                homogenousCount = (homogenousCount + (temp*(temp+1)/2))% MODULO;
+                
+                temp = 1;
              
             }
         }
         
        
-        long n = temp.length();
+      
 
-        homogenousCount = (homogenousCount + (n*(n+1)/2))% MODULO; 
+        homogenousCount = (homogenousCount + (temp*(temp+1)/2))% MODULO; 
 
         return (int) homogenousCount ;
     }
