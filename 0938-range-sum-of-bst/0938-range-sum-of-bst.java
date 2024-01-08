@@ -14,30 +14,26 @@
  * }
  */
 class Solution {
-    int sum = 0;
-    public int rangeSumBST(TreeNode root, int low, int high) {
-        if(root == null) return 0;
-        
-        
-        
-        if(root.val > low && root.val < high){
-            sum += root.val ;
-            
-            rangeSumBST(root.left, low , high) ;
-            rangeSumBST(root.right, low , high) ;
-            
-        }else if(root.val <= low){
-            
-            if(root.val == low)     sum += root.val ;
-            rangeSumBST(root.right, low , high);
-            
-        }else{
-            
-            if(root.val == high)     sum += root.val ;
-            rangeSumBST(root.left, low , high);
+    int sum=0;
+    
+    public void traverse(TreeNode root, int low, int high){
+         if (root == null)
+            return ;
+ 
+        // First recur on left child
+        traverse(root.left,low,high);
+ 
+        if(root.val>=low && root.val<=high){
+            sum+=root.val;
         }
+ 
+        // Now recur on right child
+        rangeSumBST(root.right,low,high);
         
+    }
+    
+    public int rangeSumBST(TreeNode root, int low, int high) {
+       traverse(root,low,high);
         return sum;
-        
     }
 }
