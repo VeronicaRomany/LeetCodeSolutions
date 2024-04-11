@@ -1,60 +1,57 @@
 class Solution {
-    public String LongestPalindromAtcertainPoint(String s , int left , int right , String res){
-        int resultLength = res.length();
-       
-        
-        return res;
-    }
     public String longestPalindrome(String s) {
-        if(s.length()<2) return s;
         
+        char [] input = s.toCharArray();
+        int maxLen=0;
+        int maxStart=0;
+        int maxEnd=0;
+        int left=0;
+        int right=0;
         
-        String res = "";
-        int resultLength = 0;
-
-        int left = 0;
-        int right = 0;
-
-       
-        
-        for(int i=0 ; i< s.length() ; i++){
-            // odd length
-            left = i;
-            right = i;
-            while(left>=0 && right<s.length() && s.charAt(left)==s.charAt(right)){
-                
-                if((right-left + 1) > resultLength){
-                    resultLength = right-left+1;
-                    res = s.substring(left, right+1);
-                    System.out.println(res);
-                }
-                
-                left--;
-                right++;
-                
-            }
-            
-            left = i;
-            right = i+1;
-               while(left>=0 && right<s.length() && s.charAt(left)==s.charAt(right)){
-                
-                if((right-left + 1) > resultLength){
-                    resultLength = right-left+1;
-                    res = s.substring(left, right+1);
-                    System.out.println(res);
-                }
-                
-                left--;
-                right++;
-                
-            }
-            
-        }
-        
-        return res;
-       
         
      
+            
+           for(int i = 0; i < input.length; i++) {
+            
+            // For odd-length palindromes
+            left = i - 1;
+            right = i + 1;
+            while(left >= 0 && right < input.length && input[left] == input[right]) {
+                if(right - left + 1 > maxLen) {
+                    maxLen = right - left + 1;
+                    maxStart = left;
+                    maxEnd = right;
+                }
+                left--;
+                right++;
+            }
+            
+            // For even-length palindromes
+            left = i;
+            right = i + 1;
+            while(left >= 0 && right < input.length && input[left] == input[right]) {
+                if(right - left + 1 > maxLen) {
+                    maxLen = right - left + 1;
+                    maxStart = left;
+                    maxEnd = right;
+                }
+                left--;
+                right++;
+            }
+        }
         
-    }
+        
+        // System.out.println(maxStart + " " + maxEnd);
+        
+        StringBuilder sb = new StringBuilder();
+        for (int i = maxStart; i <= maxEnd; i++) {
+            sb.append(input[i]);
+        }
+
+        // Return the substring
+        return sb.toString();
+            
+     }
 }
+        
+        
