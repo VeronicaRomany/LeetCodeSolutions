@@ -3,13 +3,15 @@ class Solution {
         
         if(s.length() != t.length()) return false;
         
+        char[] S = s.toCharArray();
+        char[] T = t.toCharArray();
         
         int [] sFreq = new int [26];
         int [] tFreq = new int [26];
         
         for(int i=0 ; i<s.length() ; i++){
-            sFreq[(int) (s.charAt(i)-'a')]++;
-            tFreq[(int) (t.charAt(i)-'a')]++;
+            sFreq[(int) (S[i]-'a')]++;
+            tFreq[(int) (T[i]-'a')]++;
         }
         
         for(int i=0 ; i<26;i++){
