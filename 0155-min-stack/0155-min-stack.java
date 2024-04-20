@@ -1,47 +1,50 @@
+  class Node{
+        public int val;
+        public int min;
+        public Node next;
+        
+        public Node(int v , int m , Node n){
+            this.val = v;
+            this.min = m;
+            this.next = n;
+        }
+    }
+
+
 class MinStack {
     
-    Stack<Integer> stack;
-    PriorityQueue<Integer> pq;
-   
+    private Node head;
+
 
     public MinStack() {
-        stack= new Stack();
-        pq=new PriorityQueue();
-       
+        this.head = null;
     }
     
     public void push(int val) {
-        stack.push(val);
-        pq.add(val);
-        
+        if(head == null){
+            head = new Node(val , val , null);
+        }else{
+            
+            Node temp = new Node(val , head.min , head);
+            
+            if(temp.val < head.min ){
+                temp.min = temp.val;
+            }
+            
+            head = temp;
+        }
     }
     
     public void pop() {
-        pq.remove(stack.pop());
+        head = head.next;
     }
     
     public int top() {
-      return stack.peek();
+        return head.val;
     }
     
     public int getMin() {
-        return pq.peek();
-//         Stack<Integer> s = new Stack();
-//         int min = Integer.MAX_VALUE;
-        
-//         while(!stack.isEmpty()){
-//             if(stack.peek() < min){
-//                 min = stack.peek();
-//             }
-            
-//             s.push(stack.pop());
-//         }
-        
-//         while(!s.isEmpty()){
-//             stack.push(s.pop());
-//         }
-        
-//         return min;
+         return head.min;
     }
 }
 
