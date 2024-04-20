@@ -14,50 +14,29 @@
  * }
  */
 
-class Node{
-    public TreeNode node ;
-    public int level;
-    
-    public Node(TreeNode node , int level){
-        this.node = node;
-        this.level = level;
-    }
-}
+
 class Solution {
-    public List<List<Integer>> levelOrder(TreeNode root) {
+    public void recursiveBuild(TreeNode root , int level ,List<List<Integer>> ans ){
+        if(root==null){
+            return;
+        }
+            
         
-        List<List<Integer>> answer = new ArrayList<>();
-        
-        if(root == null) return answer;
-        
-        Queue<Node> q = new LinkedList();
-        
-        q.add(new Node(root , 0));
-        
-        while(!q.isEmpty()){
-            Node current = q.poll();
-            
-              // Ensure that the answer list has enough levels
-            while (answer.size() <= current.level) {
-                answer.add(new ArrayList<>());
-            }
-            
-            // Add the current node value to its corresponding level
-            answer.get(current.level).add(current.node.val);
-            
-            
-            
-            if(current.node.left !=null){
-                q.add(new Node(current.node.left , current.level+1));
-            }
-            
-            if(current.node.right !=null){
-                 q.add(new Node(current.node.right , current.level+1));
-            }
-            
+        if(ans.size() <= level){
+            ans.add(new ArrayList());
         }
         
-        return answer;
+        ans.get(level).add(root.val);
+        
+        recursiveBuild(root.left , level + 1 , ans);
+        recursiveBuild(root.right , level + 1 , ans);
+    }
+    public List<List<Integer>> levelOrder(TreeNode root) {
+        List<List<Integer>> ans = new ArrayList();
+        recursiveBuild(root , 0 , ans);
+        return ans;
+        
+      
         
         
     }
