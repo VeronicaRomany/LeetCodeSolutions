@@ -6,8 +6,8 @@ class Solution {
         int num2 = edges[1][0];
         int num3 = edges[1][1];
         
-        if(num1 == num2 || num1 == num3) return num1;
+        if(edges[0][0] == edges[1][0] || edges[0][0] == edges[1][1]) return edges[0][0];
         
-        return num4;
+        return edges[0][1];
     }
 }
