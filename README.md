@@ -11,6 +11,7 @@
 | [2292-counting-words-with-a-given-prefix](https://github.com/VeronicaRomany/LeetCodeSolutions/tree/master/2292-counting-words-with-a-given-prefix) |
 | [2465-shifting-letters-ii](https://github.com/VeronicaRomany/LeetCodeSolutions/tree/master/2465-shifting-letters-ii) |
 | [3372-longest-strictly-increasing-or-strictly-decreasing-subarray](https://github.com/VeronicaRomany/LeetCodeSolutions/tree/master/3372-longest-strictly-increasing-or-strictly-decreasing-subarray) |
+| [3429-special-array-i](https://github.com/VeronicaRomany/LeetCodeSolutions/tree/master/3429-special-array-i) |
 ## String
 |  |
 | ------- |
